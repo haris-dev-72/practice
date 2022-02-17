@@ -16,7 +16,7 @@ jobs:
 
     build:
         #The type of machine to run the job on. The machine can be either a GitHub-hosted runner, or a self-hosted runner.
-        Given below more about runs-on environment.\
+ 
 
     runs-on: ubuntu-latest
 
@@ -51,6 +51,6 @@ jobs:
             - name: Install Surge
               run: npm install -g surge
             - name: Run surge
-              run: surge ./build https://practice_react_app.surge.sh/ --token ${{ secrets.SURGE_TOKEN }}
+              run: surge ./build https://practice_react_app.surge.sh/ --token ${{ secrets.react_secret }}
 
 
