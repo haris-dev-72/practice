@@ -1,0 +1,25 @@
+name: Github CD Pipeline
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Deploying to surge
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 12
+      - name: GitHub Action for Yarn
+  # You may pin to the exact commit or the version.
+  # uses: Borales/actions-yarn@4965e1a0f0ae9c422a9a5748ebd1fb5e097d22b9
+        uses: Borales/actions-yarn@v2.3.0
+        with:
+       # Yarn command
+             cmd: install
+      - name: installing surge
+        run: npm install -g surge
+      - name: Run surge deployment
+        run: surge ./build https://practice_react_app.surge.sh/.surge.sh --token ${{ secrets.react_secret }}
